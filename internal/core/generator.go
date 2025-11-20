@@ -1,11 +1,10 @@
-kpackage core
+package core
 
 import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
 	"math"
-	"math/big"
 	"strings"
 
 	"github.com/lucasparente-codigos/arcana/internal/domain"
@@ -73,7 +72,6 @@ func GeneratePassword(masterKey string, config domain.Config, profile domain.Pro
 // mapBytesToCharset converte bytes aleatórios em caracteres do alfabeto
 // usando rejection sampling para evitar viés de módulo.
 func mapBytesToCharset(hash []byte, alphabet string, length int) string {
-	alphabetLen := big.NewInt(int64(len(alphabet)))
 	var result strings.Builder
 	
 	// Se precisarmos de mais bytes do que o hash fornece,
